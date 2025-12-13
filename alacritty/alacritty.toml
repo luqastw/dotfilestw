@@ -1,0 +1,55 @@
+[window]
+dimensions = { columns = 90, lines = 22 }
+padding = { x = 5, y = 5 }
+startup_mode = "Windowed"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Iosevka Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka Nerd Font"
+style = "Italic"
+
+# Esquema de cores Graphite para Alacritty (TOML)
+
+[colors.primary]
+background = "#161616"
+foreground = "#f5f5f5"
+dim_foreground = "#f5f5f5"
+bright_foreground = "#ffffff"
+
+[colors.cursor]
+text = "CellBackground"
+cursor = "CellForeground"
+
+[colors.selection]
+text = "CellForeground"
+background = "#424242"
+
+[colors.normal]
+black   = "#161616"
+red     = "#fd6883"
+green   = "#87c095"
+yellow  = "#e3c78a"
+blue    = "#82aaff"
+magenta = "#c099ff"
+cyan    = "#86e1fc"
+white   = "#e3e3e3"
+
+[colors.bright]
+black   = "#262626"
+red     = "#fd6883"
+green   = "#87c095"
+yellow  = "#e3c78a"
+blue    = "#82aaff"
+magenta = "#c099ff"
+cyan    = "#86e1fc"
+white   = "#ffffff"
