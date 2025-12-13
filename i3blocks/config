@@ -4,27 +4,28 @@ separator_block_width=15
 color=#9b8d7f
 
 [cpu]
-label=CPU
+label=CPU 
 command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
 interval=5
 
 [memory]
-label=MEM
+label=MEM 
 command=free -h | awk '/^Mem/ {print $3 "/" $2}'
 interval=10
 
 [volume]
-label=VOL
+label=VOL 
 command=pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'
 interval=once
 signal=10
 
 [battery]
-label=BAT
+label=BAT 
 command=acpi -b | grep -o '[0-9]*%'
 interval=30
 
 [time]
-label=DATA
+label=DATA 
 command=date "+%Y-%m-%d %H:%M:%S"
 interval=1
+
