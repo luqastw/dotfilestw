@@ -1,31 +1,35 @@
-# Global properties
 separator=true
 separator_block_width=15
-color=#9b8d7f
+color=#e8d5b7
+markup=pango
 
 [cpu]
-label=CPU 
-command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+label=<span color="#f0a868">CPU </span>
+command=mpstat 1 1 | awk 'END {print 100 - $NF"%"}'
 interval=5
+color=#f0a868
 
 [memory]
-label=MEM 
+label=<span color="#f5b878">MEM </span>
 command=free -h | awk '/^Mem/ {print $3 "/" $2}'
 interval=10
+color=#f5b878
 
 [volume]
-label=VOL 
+label=<span color="#e87843">VOL </span>
 command=pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'
 interval=once
-signal=10
+signal=1
+color=#e87843
 
 [battery]
-label=BAT 
+label=<span color="#d84a3a">BAT </span>
 command=acpi -b | grep -o '[0-9]*%'
 interval=30
+color=#d84a3a
 
 [time]
-label=DATA 
-command=date "+%Y-%m-%d %H:%M:%S"
+label=<span color="#a83a2d">DATA </span>
+command=date '+%d %H:%M'
 interval=1
-
+color=#a83a2d
