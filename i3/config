@@ -1,3 +1,4 @@
+
 set $mod Mod4
 set $term alacritty
 
@@ -8,12 +9,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-# startup processes
-# exec --no-startup-id xrandr --output HDMI-A-0 --auto --left-of eDP
-# exec --no-startup-id xrandr --output HDMI-A-0 --mode 2560x1440 --rate 59.95
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 i3blocks# startup processes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -24,8 +22,7 @@ tiling_drag modifier titlebar
 
 bindsym $mod+Return exec $term
 bindsym $mod+c kill
-bindsym $mod+d exec --no-startup-id dmenu_run -nb "#1a1b26" -nf "#c0caf5" -sb "#7aa2f7" -sf "#1a1b26" -fn "Iosevka Nerd Font:size=10"
-
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrains Mono Nerd Font-10' -nb '#1a1a1a' -nf '#e8d5b7' -sb '#e87843' -sf '#1a1a1a'
 bindsym $mod+F11 exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+F11 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
@@ -132,47 +129,34 @@ mode "special" {
 
 bindsym $mod+z mode "special"
 
-# window colors
-set $bg #1a1b26
-set $fg #c0caf5
-set $blue #7aa2f7
-set $inactive #292e42
-set $urgent #f7768e
-
-client.focused          $blue     $blue     $bg       $blue      $blue
-client.focused_inactive $inactive $inactive $fg       $inactive  $inactive
-client.unfocused        $bg       $bg       $fg       $bg        $bg
-client.urgent           $urgent   $urgent   $bg       $urgent    $urgent
-client.placeholder      $bg       $bg       $fg       $bg        $bg
-
-client.background       $bg
+client.focused          #e87843 #e87843 #1a1a1a #f0a868   #e87843
+client.focused_inactive #d86b3e #2b1d1d #e8d5b7 #2b1d1d   #2b1d1d
+client.unfocused        #2b1d1d #1a1a1a #e8d5b7 #1a1a1a   #1a1a1a
+client.urgent           #d84a3a #d84a3a #ffffff #d84a3a   #d84a3a
+client.placeholder      #1a1a1a #1a1a1a #e8d5b7 #1a1a1a   #1a1a1a
+client.background       #1a1a1a
 
 bar {
   status_command i3blocks -c ~/.config/i3blocks/config
-  position bottom
+  position top
   separator_symbol "::"
   colors {
-    background #1a1b26
-    statusline #c0caf5
-    separator  #7aa2f7
-
-    focused_workspace  #7aa2f7 #7aa2f7 #1a1b26
-    active_workspace   #292e42 #292e42 #c0caf5
-    inactive_workspace #1a1b26 #1a1b26 #a9b1d6
-    urgent_workspace   #f7768e #f7768e #1a1b26
-    binding_mode       #f7768e #f7768e #1a1b26
-  }
-  font pango:Iosevka Nerd Font 10
+background #1a1a1a
+        statusline #e8d5b7
+        separator  #e87843
+        
+        focused_workspace   #e87843 #e87843    #1a1a1a
+        active_workspace    #d86b3e #d86b3e    #1a1a1a
+        inactive_workspace  #2b1d1d #2b1d1d    #e8d5b7
+        urgent_workspace    #d84a3a #d84a3a    #ffffff
+        binding_mode        #f0a868 #f0a868    #1a1a1a
+        }
+  font pango: JetBrains Mono Nerd Font 9
   tray_output primary
 }
 
-# exec --no-startup-id xset r rate 200 50
-# exec --no-startup-id xset dpms 700 0 0
-
-# gaps
-
-gaps inner 5
-gaps outer 3
+gaps inner 2
+gaps outer 0
 workspace 5 gaps horizontal 150
 workspace 5 gaps vertical 50
 workspace 5 gaps inner 10
@@ -183,20 +167,9 @@ exec --no-startup-id /usr/lib/kwalletd5
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id fcitx -d
 
+exec_always --no-startup-id xinput set-prop 13 338 1
 exec_always --no-startup-id picom
-exec_always --no-startup-id nitrogen --restore 
-# exec_always --no-startup-id feh --bg-fill ~/dotfiles/wallpapers/samori.jpg
-# exec_always --no-startup-id xcompmgr
+exec_always --no-startup-id nitrogen --restore
 
-default_border pixel 2
+default_border pixel 0
 default_floating_border pixel 1
-
-# --- Configuração do JARVIS ---
-
-# 1. Define que a janela com título "Jarvis Security" será flutuante e centralizada
-for_window [title="Jarvis Security"] floating enable
-for_window [title="Jarvis Security"] resize set 800 600
-for_window [title="Jarvis Security"] move position center
-
-# 2. Executa o script no boot (Troque 'alacritty' pelo seu terminal)
-exec --no-startup-id alacritty --title "Jarvis Security" -e /home/luqastw/jarvis_security.sh
