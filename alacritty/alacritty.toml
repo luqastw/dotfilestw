@@ -9,15 +9,15 @@ decorations = "Full"
 size = 10.0
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "Liberation Mono"
 style = "Regular"
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "Liberation Mono"
 style = "Bold"
 
 [font.italic]
-family = "JetBrains Mono Nerd Font"
+family = "Liberation Mono"
 style = "Italic"
 
 [colors.primary]
@@ -51,15 +51,3 @@ white = "#f5e5c7"
 [colors.selection]
 text = "#1a1a1a"
 background = "#e87843"
-
-[colors.search.matches]
-foreground = "#1a1a1a"
-background = "#f0a868"
-
-[colors.search.focused_match]
-foreground = "#1a1a1a"
-background = "#d84a3a"
-
-[colors.vi_mode_cursor]
-text = "#1a1a1a"
-cursor = "#e87843"

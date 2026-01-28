@@ -33,3 +33,10 @@ label=<span color="#a83a2d">DATA </span>
 command=date '+%d %H:%M'
 interval=1
 color=#a83a2d
+
+[power]
+command=~/.config/i3/scripts/power_dmenu.sh
+interval=once
+min_width=20
+align=center
+separator=false
