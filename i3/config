@@ -1,7 +1,7 @@
 set $mod Mod4
 set $term alacritty
 
-font pango:Liberation Mono 12
+font pango:JetBrains Mono Nerd Font 12
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock dimblur --nofork
@@ -23,7 +23,7 @@ tiling_drag modifier titlebar
 
 bindsym $mod+Return exec $term
 bindsym $mod+c kill
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Liberation Mono-11' -nb '#1a1a1a' -nf '#e8d5b7' -sb '#e87843' -sf '#1a1a1a'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrains Mono Nerd Font-10' -nb '#0a0a0a' -nf '#d1d1d1' -sb '#444444' -sf '#ffffff'
 bindsym $mod+F11 exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+F11 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
@@ -130,35 +130,32 @@ mode "special" {
 
 bindsym $mod+z mode "special"
 
-client.focused          #e87843 #e87843 #1a1a1a #f0a868   #e87843
-client.focused_inactive #d86b3e #2b1d1d #e8d5b7 #2b1d1d   #2b1d1d
-client.unfocused        #2b1d1d #1a1a1a #e8d5b7 #1a1a1a   #1a1a1a
-client.urgent           #d84a3a #d84a3a #ffffff #d84a3a   #d84a3a
-client.placeholder      #1a1a1a #1a1a1a #e8d5b7 #1a1a1a   #1a1a1a
-client.background       #1a1a1a
+client.focused          #666666 #333333 #ffffff #444444   #505050
+client.focused_inactive #1a1a1a #1a1a1a #888888 #1a1a1a   #1a1a1a
+client.unfocused        #0a0a0a #0a0a0a #555555 #0a0a0a   #0a0a0a
+client.urgent           #d1d1d1 #d1d1d1 #0a0a0a #d1d1d1   #d1d1d1
 
 bar {
   status_command i3blocks -c ~/.config/i3blocks/config
-  position top
+  position bottom
   separator_symbol "::"
   colors {
-        background #1a1a1a
-        statusline #e8d5b7
-        separator  #e87843
-        
-        focused_workspace   #e87843 #e87843    #1a1a1a
-        active_workspace    #d86b3e #d86b3e    #1a1a1a
-        inactive_workspace  #2b1d1d #2b1d1d    #e8d5b7
-        urgent_workspace    #d84a3a #d84a3a    #ffffff
-        binding_mode        #f0a868 #f0a868    #1a1a1a
+        background #0a0a0a
+        statusline #b0b0b0
+        separator  #333333
+
+        focused_workspace  #666666 #666666 #ffffff
+        active_workspace   #333333 #333333 #d1d1d1
+        inactive_workspace #0a0a0a #0a0a0a #666666
+        urgent_workspace   #d1d1d1 #d1d1d1 #0a0a0a
         }
-  font pango: Liberation Mono 9
+  font pango: JetBrains Mono Nerd Font 9
   tray_output primary
 }
 
-gaps inner 2
-gaps outer 0
-workspace 5 gaps horizontal 150
+gaps inner 5
+gaps outer 3
+workspace 5 gaps horizontal 100
 workspace 5 gaps vertical 50
 workspace 5 gaps inner 10
 

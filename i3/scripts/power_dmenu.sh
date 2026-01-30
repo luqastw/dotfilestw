@@ -11,11 +11,11 @@ if [ "$BLOCK_BUTTON" ]; then
   options="$lock\n$logout\n$suspend\n$reboot\n$shutdown"
 
   selected=$(echo -e "$options" | dmenu -i -p "System:" \
-    -fn 'Liberation Mono-10' \
-    -nb '#1a1a1a' \
-    -nf '#e8d5b7' \
-    -sb '#e87843' \
-    -sf '#1a1a1a')
+    -fn 'JetBrains Mono Nerd Font-10' \
+    -nb '#0a0a0a' \
+    -nf '#d1d1d1' \
+    -sb '#5e6a71' \
+    -sf '#ffffff')
 
   case "$selected" in
   "$lock")
@@ -38,4 +38,4 @@ fi
 
 echo "⏻"
 echo "⏻"
-echo "#f0a868"
+echo "#d1d1d1"

@@ -1,41 +1,42 @@
 separator=true
 separator_block_width=15
-color=#e8d5b7
+color=#d1d1d1
 markup=pango
 
 [cpu]
-label=<span color="#f0a868">CPU </span>
+label=<span color="#888888">CPU </span>
 command=mpstat 1 1 | awk 'END {print 100 - $NF"%"}'
 interval=5
-color=#f0a868
+color=#d1d1d1
 
 [memory]
-label=<span color="#f5b878">MEM </span>
+label=<span color="#78868c">MEM </span>
 command=free -h | awk '/^Mem/ {print $3 "/" $2}'
 interval=10
-color=#f5b878
+color=#d1d1d1
 
 [volume]
-label=<span color="#e87843">VOL </span>
+label=<span color="#a0a0a0">VOL </span>
 command=pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'
 interval=once
 signal=1
-color=#e87843
+color=#d1d1d1
 
 [battery]
-label=<span color="#d84a3a">BAT </span>
+label=<span color="#888888">BAT </span>
 command=acpi -b | grep -o '[0-9]*%'
 interval=30
-color=#d84a3a
+color=#d1d1d1
 
 [time]
-label=<span color="#a83a2d">DATA </span>
+label=<span color="#78868c">DATA </span>
 command=date '+%d %H:%M'
 interval=1
-color=#a83a2d
+color=#d1d1d1
 
 [power]
 command=~/.config/i3/scripts/power_dmenu.sh
+full_text=<span color="#ffffff"> </span>
 interval=once
 min_width=20
 align=center
