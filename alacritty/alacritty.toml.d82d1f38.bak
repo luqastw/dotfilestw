@@ -47,8 +47,3 @@ blue    = '0x78868c'
 magenta = '0x919191'
 cyan    = '0xa8bdbd'
 white   = '0xffffff'
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
