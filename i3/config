@@ -1,13 +1,15 @@
 set $mod Mod4
 set $term alacritty
 
-font pango:JetBrains Mono Nerd Font 12
+font pango: JetBrains Mono Nerd Font 12
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock dimblur --nofork
 exec --no-startup-id nm-applet
-exec xinput set-prop '11' 'libinput Accel Speed' -0.5
-exec xinput set-prop 11 "libinput Accel Profile Enabled" 0 1 0
+exec xinput set-prop '8' 'libinput Accel Speed' -0.5
+exec xinput set-prop '8' "libinput Accel Profile Enabled" 0 1 0
+exec --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1   
+exec --no-startup-id unclutter --timeout 3
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 i3blocks
@@ -137,7 +139,7 @@ client.urgent           #d1d1d1 #d1d1d1 #0a0a0a #d1d1d1   #d1d1d1
 
 bar {
   status_command i3blocks -c ~/.config/i3blocks/config
-  position bottom
+  position top
   separator_symbol "::"
   colors {
         background #0a0a0a

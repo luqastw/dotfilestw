@@ -2,7 +2,6 @@
 dimensions = { columns = 95, lines = 21 }
 padding = { x = 20, y = 20 }
 startup_mode = "Windowed"
-title = "Prometheus Core"
 decorations = "Full"
 
 [font]
